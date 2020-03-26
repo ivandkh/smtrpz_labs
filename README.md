@@ -1,5 +1,5 @@
-# Dikhtyar Ivan IT-84
-## smtrpz labs
+# smtrpz labs 
+## Dikhtyar Ivan IT-84
 ======
 
 Done:
