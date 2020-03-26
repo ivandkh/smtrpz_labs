@@ -1,7 +1,8 @@
-# smtrpz-labs Dikhtyar Ivan IT-84
+# Dikhtyar Ivan IT-84
+## smtrpz labs
 ======
 
 Done:
- -Lab 3 (variant 2)
+- [Lab 3 (variant 2)]](./lab3/examples.ipynb)
 
-Dikhtyar Ivan IT-84 
+
