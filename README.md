@@ -1,4 +1,8 @@
-# smtrpz lab 3
-Variant 2
+# smtrpz-labs 
+# Dikhtyar Ivan IT-84
+======
+
+Done:
+ -Lab 3 (variant 2)
 
 Dikhtyar Ivan IT-84 
