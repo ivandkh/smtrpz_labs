@@ -28,16 +28,16 @@ class Register():
         self.cardsID[newcard.id] = newcard
         return newcard
 
-    def get_card_info(self, card_id: UUID) -> (bool, dict, str):
+    def get_card_info(self, card_id: UUID) -> (bool,  str):
 
         try:
             if card_id in self.banned .keys():
-                return False, {}, 'This card was banned.\n %s' % \
+                return False,  'This card was banned.\n %s' % \
                                   getattr(self.banned[card_id], 'description')
 
-            return True, self.cardsID[card_id].__dict__, ''
+            return True,  ''
         except KeyError:
-            return False, {}, 'Card not found.'
+            return False, 'Card not found.'
 
     def ban_card(self, card_id: UUID, description: str='') -> None:
         card = self.cardsID.pop(card_id)
