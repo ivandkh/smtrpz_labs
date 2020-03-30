@@ -1,5 +1,4 @@
-import cards
-from cards import CardType
+from cards import CardType, cards_types_mapping
 from uuid import UUID
 
 
@@ -15,14 +14,9 @@ class Register():
         print("Register '%s' created." % name)
 
     def create_card(self, cardtype: CardType, *args, **kwargs):
-
-        if cardtype is CardType.TimeLimit:
-            newcard = cards.TimeLimitCard(*args, **kwargs)
-        elif cardtype is CardType.NumLimit:
-            newcard = cards.NumLimitCard(*args, **kwargs)
-        elif cardtype is CardType.BalanceLimit:
-            newcard = cards.BalanceLimitCard(*args, **kwargs)
-        else:
+        try:
+            newcard = cards_types_mapping[cardtype](*args, **kwargs)
+        except KeyError:
             raise TypeError("Cardtype `%s` is not supported!" % cardtype.name)
 
         self.cardsID[newcard.id] = newcard

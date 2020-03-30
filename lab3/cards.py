@@ -1,3 +1,4 @@
+from abc import ABC, abstractmethod
 from enum import Enum, auto
 from uuid import uuid4
 import datetime
@@ -16,9 +17,9 @@ class TimeDuration(Enum):
 
 
 class CardBase(ABC):
-    def __init__(self, type_: CardType, isspecial: bool=False):
+    def __init__(self, isspecial: bool=False):
         self.id = uuid4()
-        self.type_ = type_
+        self.type_ = type(self)
         self.isspecial = isspecial
 
     def __repr__(self):
@@ -31,7 +32,7 @@ class CardBase(ABC):
 
 class TimeLimitCard(CardBase):
     def __init__(self, duration: TimeDuration, isspecial: bool=False):
-        super().__init__(CardType.TimeLimit, isspecial)
+        super().__init__(isspecial)
 
         self.expiration = datetime.datetime.now() + duration.value
 
@@ -47,7 +48,7 @@ class TimeLimitCard(CardBase):
 
 class NumLimitCard(CardBase):
     def __init__(self, numtravels: int, isspecial: bool=False):
-        super().__init__(CardType.NumLimit, isspecial)
+        super().__init__(isspecial)
 
         self.numtravels = numtravels
 
@@ -65,7 +66,7 @@ class NumLimitCard(CardBase):
 
 class BalanceLimitCard(CardBase):
     def __init__(self, balance: float):
-        super().__init__(CardType.BalanceLimit, False)
+        super().__init__(False)
 
         self.balance = balance
 
@@ -80,3 +81,9 @@ class BalanceLimitCard(CardBase):
             success = False
 
         return success, msg
+
+cards_types_mapping = {
+    CardType.TimeLimit: TimeLimitCard,
+    CardType.NumLimit: NumLimitCard,
+    CardType.BalanceLimit: BalanceLimitCard,
+    }
