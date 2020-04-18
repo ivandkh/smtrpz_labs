@@ -2,5 +2,9 @@
 ## Dikhtyar Ivan IT-84
 
 
-Done:
-- [Lab 3 (variant 2)](./lab3/examples.ipynb)
+Todo:
+- [x] [Lab 3 (variant 2)](./lab3/examples.ipynb)
+- [x] [Lab 6](./lab6/)
+- [x] [Lab 4](./lab4/)
+- [ ] Lab 7
+- [ ] Lab 8
