@@ -2,7 +2,6 @@ from typing import Generic, TypeVar, List
 from humans import Human, Policeman, Firefighter
 
 T = TypeVar('T')
-Z = TypeVar('Z')
 
 
 class Vehicle(Generic[T]):
