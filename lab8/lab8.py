@@ -21,12 +21,21 @@ class Bank():
 
 	def transfer(self, source, target, amount):
 		if source in self.accounts and target in self.accounts:
+			if source.ident > target.ident:
+				first, sec = source.ident, target.ident
+			else:
+				sec, first = source.ident, target.ident
+			
 			try:
-				with source._lock, target._lock:
-					source.change_balance(-amount)
-					target.change_balance(amount)
+				first._lock()
+				second._lock()
+				source.change_balance(-amount)
+				target.change_balance(amount)
 			except:
 				print("Not enough money!")
+			finally:
+				source.release()
+				target.release()
 
 		else : 
 			print('Account not found.')
